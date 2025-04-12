@@ -2,8 +2,8 @@ import {
   Box,
   Center,
   Heading,
-  HStack,
   Image,
+  Stack,
   Textarea,
   VStack,
 } from '@chakra-ui/react'
@@ -21,13 +21,9 @@ const getRandomLine = (): DialogueLine => {
 
 const SpeakLikeCloud = () => {
   const bgImageRef = useRef<HTMLImageElement>(null)
-  const [bgImageHeight, setBgImageHeight] = useState<number | undefined>(0)
+  const bgImageHeight = bgImageRef.current?.clientHeight ?? 0
   const [name, setName] = useState<string>('')
   const [cloudText, setCloudText] = useState<string>('')
-
-  useEffect(() => {
-    setBgImageHeight(bgImageRef.current?.clientHeight)
-  }, [setBgImageHeight])
 
   useEffect(() => {
     const dialogueLine = getRandomLine()
@@ -35,52 +31,76 @@ const SpeakLikeCloud = () => {
     setName(dialogueLine.name)
   }, [])
 
+  console.log(bgImageHeight)
   return (
-    <Center>
-      <VStack spaceY={5} w={'full'} maxW={MAX_WIDTH}>
-        <HStack fontSize={'128px'} my={10} spaceX={4}>
-          <Heading
-            fontSize={'64px'}
-            fontWeight={'200'}
-            //outline={'1px solid green'}
-            lineHeight={1}
-          >
-            Speak like
-          </Heading>
-          <Heading
-            fontSize={'90px'}
-            fontFamily={'Reactor'}
+    <Box
+      backgroundImage={'url("/ffvii_background.jpg")'}
+      backgroundSize={'cover'}
+      h={'full'}
+    >
+      <Center backdropFilter="blur(10px)" h={'full'}>
+        <VStack
+          spaceY={3}
+          w={'full'}
+          maxW={MAX_WIDTH}
+          p={10}
+          pt={5}
+          h={{ base: 'full', md: 'unset' }}
+          bgColor={'hsl(240deg 100% 10.51%)'}
+          borderRadius={{ md: '10px' }}
+        >
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            fontSize={'128px'}
+            my={{ base: 0, md: 5 }}
+            spaceX={{ base: 0, md: 4 }}
+            justifyContent={'center'}
             //outline={'1px solid red'}
-            lineHeight={0.5}
-            alignSelf={'end'}
           >
-            {name}
-          </Heading>
-        </HStack>
-        <Box position={'relative'}>
-          <Image
-            src="/ffvii_background.jpg"
-            w={'full'}
-            aspectRatio={{ base: 3 / 4, md: 4 / 3 }}
-            ref={bgImageRef}
-          />
-          <Box position={'absolute'} top={0} left={0} w={'full'} h={'full'}>
-            <Center mt={'40px'}>
-              <Textarea
-                mx={10}
-                autoresize
-                variant={'cloud'}
-                w={'full'}
-                minH={'100px'}
-                maxH={bgImageHeight && bgImageHeight - 80}
-                value={cloudText}
-                onChange={(e) => setCloudText(e.target.value)}
-              />
-            </Center>
+            <Heading
+              fontSize={{ base: '32px', md: '64px' }}
+              fontWeight={'200'}
+              //outline={'1px solid green'}
+              lineHeight={1}
+              textAlign={'center'}
+            >
+              Speak like
+            </Heading>
+            <Heading
+              fontSize={'90px'}
+              fontFamily={'Reactor'}
+              //outline={'1px solid red'}
+              lineHeight={{ base: 1, md: 0.5 }}
+              alignSelf={{ base: 'center', md: 'end' }}
+            >
+              {name}
+            </Heading>
+          </Stack>
+          <Box position={'relative'}>
+            <Image
+              src="/ffvii_background.jpg"
+              w={'full'}
+              aspectRatio={{ base: 3 / 4, md: 4 / 3 }}
+              ref={bgImageRef}
+            />
+            <Box position={'absolute'} top={0} left={0} w={'full'} h={'full'}>
+              <Center mt={'40px'}>
+                <Textarea
+                  mx={10}
+                  autoresize
+                  variant={'cloud'}
+                  w={'full'}
+                  minH={'100px'}
+                  maxH={bgImageHeight && bgImageHeight - 80}
+                  value={cloudText}
+                  onChange={(e) => setCloudText(e.target.value)}
+                />
+              </Center>
+            </Box>
           </Box>
-        </Box>
-      </VStack>
-    </Center>
+        </VStack>
+      </Center>
+    </Box>
   )
 }
 
