@@ -4,7 +4,7 @@ import * as cheerio from 'cheerio'
 import fs from 'fs'
 
 const url = 'https://finalfantasy.fandom.com/wiki/Final_Fantasy_VII_script'
-const charactersToInclude = ['Cloud', 'Tifa', 'Aerith', 'Barret', 'Sephiroth']
+const charactersToInclude = ['Cloud', 'Tifa', 'Aeris', 'Barret', 'Sephiroth']
 
 const getDialogue = async () => {
   try {
