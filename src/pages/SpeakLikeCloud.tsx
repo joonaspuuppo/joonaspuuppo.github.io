@@ -7,9 +7,10 @@ import {
   Textarea,
   VStack,
 } from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import dialogue from './../../output.json'
-import { DialogueLine } from '@/types/speakLikeCloud'
+import { CharacterName, DialogueLine } from '@/types/speakLikeCloud'
+import { getBackgroundImagePath } from '@/util/speakLikeCloud'
 
 const MAX_WIDTH = '800px'
 const lines: DialogueLine[] = dialogue
@@ -24,6 +25,10 @@ const SpeakLikeCloud = () => {
   const bgImageHeight = bgImageRef.current?.clientHeight ?? 0
   const [name, setName] = useState<string>('')
   const [cloudText, setCloudText] = useState<string>('')
+  const imagePath = useMemo(
+    () => getBackgroundImagePath(name as CharacterName),
+    [name]
+  )
 
   useEffect(() => {
     const dialogueLine = getRandomLine()
@@ -31,10 +36,9 @@ const SpeakLikeCloud = () => {
     setName(dialogueLine.name)
   }, [])
 
-  console.log(bgImageHeight)
   return (
     <Box
-      backgroundImage={'url("/ffvii_background.jpg")'}
+      backgroundImage={`url("${imagePath}")`}
       backgroundSize={'cover'}
       h={'full'}
     >
@@ -45,6 +49,7 @@ const SpeakLikeCloud = () => {
           maxW={MAX_WIDTH}
           p={10}
           pt={5}
+          my={5}
           h={{ base: 'full', md: 'unset' }}
           bgColor={'hsl(240deg 100% 10.51%)'}
           borderRadius={{ md: '10px' }}
@@ -78,7 +83,7 @@ const SpeakLikeCloud = () => {
           </Stack>
           <Box position={'relative'}>
             <Image
-              src="/ffvii_background.jpg"
+              src={imagePath}
               w={'full'}
               aspectRatio={{ base: 3 / 4, md: 4 / 3 }}
               ref={bgImageRef}
