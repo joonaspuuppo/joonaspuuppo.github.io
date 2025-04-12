@@ -1,27 +1,51 @@
-import { Box, Center, Heading, Image, Textarea, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Heading,
+  HStack,
+  Image,
+  Textarea,
+  VStack,
+} from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
+import dialogue from './../../output.json'
+import { DialogueLine } from '@/types/speakLikeCloud'
 
 const MAX_WIDTH = '1000px'
+const lines: DialogueLine[] = dialogue
 
-const cloudTexts = [
-  "Barret\n\u201CThis mission was a success. But don't get lazy now. The hard part's still to come! Don't y'all be scared of that explosion! Cause the next one's gonna be bigger than that! Meet back at the hideout!! Move out!\u201D",
-]
+const getRandomLine = (): DialogueLine => {
+  const randomIndex = Math.floor(Math.random() * lines.length)
+  return lines[randomIndex]
+}
 
 const SpeakLikeCloud = () => {
   const bgImageRef = useRef<HTMLImageElement>(null)
   const [bgImageHeight, setBgImageHeight] = useState<number | undefined>(0)
-  const [cloudText, setCloudText] = useState<string>(cloudTexts[0])
+  const [name, setName] = useState<string>('')
+  const [cloudText, setCloudText] = useState<string>('')
 
   useEffect(() => {
     setBgImageHeight(bgImageRef.current?.clientHeight)
   }, [setBgImageHeight])
 
+  useEffect(() => {
+    const dialogueLine = getRandomLine()
+    setCloudText(`${dialogueLine.name}\n\u201C${dialogueLine.line}\u201D`)
+    setName(dialogueLine.name)
+  }, [])
+
   return (
     <Center>
       <VStack spaceY={5} w={'full'} maxW={MAX_WIDTH}>
-        <Heading as={'h1'} fontSize={'28px'}>
-          Speak like Cloud
-        </Heading>
+        <HStack fontSize={'128px'} my={10} spaceX={5} alignItems={'baseline'}>
+          <Heading fontSize={'64px'} fontWeight={'400'}>
+            Speak like
+          </Heading>
+          <Heading fontSize={'75px'} fontFamily={'Reactor'} lineHeight={1.2}>
+            {name}
+          </Heading>
+        </HStack>
         <Box position={'relative'}>
           <Image
             src="/ffvii_background.jpg"
