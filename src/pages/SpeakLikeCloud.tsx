@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 import dialogue from './../../output.json'
 import { DialogueLine } from '@/types/speakLikeCloud'
 
-const MAX_WIDTH = '1000px'
+const MAX_WIDTH = '800px'
 const lines: DialogueLine[] = dialogue
 
 const getRandomLine = (): DialogueLine => {
@@ -38,11 +38,22 @@ const SpeakLikeCloud = () => {
   return (
     <Center>
       <VStack spaceY={5} w={'full'} maxW={MAX_WIDTH}>
-        <HStack fontSize={'128px'} my={10} spaceX={5} alignItems={'baseline'}>
-          <Heading fontSize={'64px'} fontWeight={'400'}>
+        <HStack fontSize={'128px'} my={10} spaceX={4}>
+          <Heading
+            fontSize={'64px'}
+            fontWeight={'200'}
+            //outline={'1px solid green'}
+            lineHeight={1}
+          >
             Speak like
           </Heading>
-          <Heading fontSize={'75px'} fontFamily={'Reactor'} lineHeight={1.2}>
+          <Heading
+            fontSize={'90px'}
+            fontFamily={'Reactor'}
+            //outline={'1px solid red'}
+            lineHeight={0.5}
+            alignSelf={'end'}
+          >
             {name}
           </Heading>
         </HStack>
