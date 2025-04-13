@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "yarn run theme && gh-pages -d dist",
     "theme": "npx @chakra-ui/cli typegen ./src/styles/theme.ts",
     "getFFVIIdialogue": "npx tsx ./src/scripts/getFFVIIdialogue.ts"
   },

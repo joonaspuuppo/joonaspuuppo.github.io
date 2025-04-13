@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Image,
+  Skeleton,
   Stack,
   Textarea,
   VStack,
@@ -83,7 +84,11 @@ const SpeakLikeCloud = () => {
               {name}
             </Heading>
           </Stack>
-          <Box position={'relative'} h={{ base: 'full', md: 'unset' }}>
+          <Skeleton
+            loading={!bgImageRef.current?.complete}
+            position={'relative'}
+            h={{ base: 'full', md: 'unset' }}
+          >
             <Image
               src={imagePath}
               w={'full'}
@@ -115,7 +120,7 @@ const SpeakLikeCloud = () => {
                 />
               </Center>
             </Flex>
-          </Box>
+          </Skeleton>
         </VStack>
       </Center>
     </Box>
