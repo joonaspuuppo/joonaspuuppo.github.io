@@ -23,8 +23,9 @@ const getRandomLine = (): DialogueLine => {
 }
 
 const SpeakLikeCloud = () => {
-  const bgImageRef = useRef<HTMLImageElement>(null)
-  const bgImageHeight = bgImageRef.current?.clientHeight ?? 0
+  const [imageHeight, setImageHeight] = useState<number>(0)
+  const [imageLoading, setImageLoading] = useState<boolean>(true)
+  const imageRef = useRef<HTMLImageElement>(null)
   const [name, setName] = useState<string>('')
   const [cloudText, setCloudText] = useState<string>('')
   const imagePath = useMemo(
@@ -32,11 +33,18 @@ const SpeakLikeCloud = () => {
     [name]
   )
 
+  const onImageLoad = () => {
+    setImageHeight(imageRef.current?.getBoundingClientRect().height ?? 0)
+    setImageLoading(false)
+  }
+
   useEffect(() => {
     const dialogueLine = getRandomLine()
     setCloudText(`${dialogueLine.name}\n\u201C${dialogueLine.line}\u201D`)
     setName(dialogueLine.name)
   }, [])
+
+  console.log(imageHeight)
 
   return (
     <Box
@@ -85,24 +93,25 @@ const SpeakLikeCloud = () => {
             </Heading>
           </Stack>
           <Skeleton
-            loading={!bgImageRef.current?.complete}
+            loading={imageLoading}
             position={'relative'}
             h={{ base: 'full', md: 'unset' }}
+            maxH={'full'}
           >
             <Image
               src={imagePath}
               w={'full'}
               h={{ base: 'full', md: 'unset' }}
               aspectRatio={{ base: undefined, md: 4 / 3 }}
-              ref={bgImageRef}
+              ref={imageRef}
+              onLoad={onImageLoad}
             />
             <Flex
               position={'absolute'}
               top={0}
               left={0}
               w={'full'}
-              h={{ base: bgImageHeight, md: 'full' }}
-              minH={{ base: bgImageHeight, md: 'full' }}
+              maxH={imageHeight}
               justify={'center'}
               align={'flex-start'}
             >
@@ -113,7 +122,7 @@ const SpeakLikeCloud = () => {
                   variant={'cloud'}
                   w={'full'}
                   minH={'100px'}
-                  maxH={bgImageHeight && bgImageHeight - 80}
+                  maxH={imageHeight && imageHeight - 80}
                   value={cloudText}
                   onChange={(e) => setCloudText(e.target.value)}
                   fontSize={{ base: '30px', md: '32px' }}
