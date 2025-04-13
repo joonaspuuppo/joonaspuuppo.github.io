@@ -22,6 +22,9 @@ import { useSwipeable } from 'react-swipeable'
  * TODO:
  * - Add ability to return to previous line & image combinations
  *   by clicking a back button or swiping down
+ * - Make image extend all the way to the top in mobile view
+ *   so that the blurred heading section is a continuation
+ *   of the same image
  */
 
 const MAX_WIDTH = '800px'
