@@ -1,12 +1,6 @@
+import { imageCounts, verbs } from '@/constants/speakLikeCloud'
 import { CharacterName } from '@/types/speakLikeCloud'
 
-const imageCounts = {
-  Cloud: 5,
-  Tifa: 4,
-  Aeris: 5,
-  Barret: 3,
-  Sephiroth: 3,
-}
 export const getBackgroundImagePath = (
   characterName: CharacterName
 ): string => {
@@ -31,4 +25,8 @@ const getRandomImagePostfix = (characterName: CharacterName): string => {
   const count = imageCounts[characterName]
   const randomIndex = Math.floor(Math.random() * count)
   return randomIndex < 1 ? '' : `_${randomIndex}`
+}
+
+export const getCharacterVerb = (characterName: CharacterName): string => {
+  return verbs[characterName]
 }
