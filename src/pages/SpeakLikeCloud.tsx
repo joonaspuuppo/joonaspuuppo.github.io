@@ -16,6 +16,7 @@ import dialogue from './../../output.json'
 import { CharacterName, DialogueLine } from '@/types/speakLikeCloud'
 import { getBackgroundImagePath, getCharacterVerb } from '@/util/speakLikeCloud'
 import { MdUpdate } from 'react-icons/md'
+import { useSwipeable } from 'react-swipeable'
 
 const MAX_WIDTH = '800px'
 const lines: DialogueLine[] = dialogue
@@ -30,6 +31,11 @@ const SpeakLikeCloud = () => {
     () => getBackgroundImagePath(name as CharacterName),
     [name]
   )
+  const handlers = useSwipeable({
+    onSwipedUp: () => setRandomDialogueLine(),
+    delta: 75,
+    swipeDuration: 500,
+  })
 
   const onImageLoad = () => {
     setImageHeight(imageRef.current?.getBoundingClientRect().height ?? 0)
@@ -53,6 +59,7 @@ const SpeakLikeCloud = () => {
         backgroundImage={`url("${imagePath}")`}
         backgroundSize={'cover'}
         h={'full'}
+        {...handlers}
       >
         <Center backdropFilter="blur(10px)" h={'full'}>
           <VStack
