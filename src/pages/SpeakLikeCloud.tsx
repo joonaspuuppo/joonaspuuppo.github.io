@@ -18,6 +18,12 @@ import { getBackgroundImagePath, getCharacterVerb } from '@/util/speakLikeCloud'
 import { MdUpdate } from 'react-icons/md'
 import { useSwipeable } from 'react-swipeable'
 
+/**
+ * TODO:
+ * - Add ability to return to previous line & image combinations
+ *   by clicking a back button or swiping down
+ */
+
 const MAX_WIDTH = '800px'
 const lines: DialogueLine[] = dialogue
 
