@@ -1,6 +1,7 @@
 import {
   Box,
   Center,
+  Flex,
   Heading,
   Image,
   Stack,
@@ -47,11 +48,11 @@ const SpeakLikeCloud = () => {
           spaceY={3}
           w={'full'}
           maxW={MAX_WIDTH}
-          p={10}
+          p={{ base: 0, md: 10 }}
           pt={5}
           my={5}
           h={{ base: 'full', md: 'unset' }}
-          bgColor={'hsl(240deg 100% 10.51%)'}
+          bgColor={{ base: 'transparent', md: 'hsl(240deg 100% 10.51%)' }}
           borderRadius={{ md: '10px' }}
         >
           <Stack
@@ -77,19 +78,30 @@ const SpeakLikeCloud = () => {
               //outline={'1px solid red'}
               lineHeight={{ base: 1, md: 0.5 }}
               alignSelf={{ base: 'center', md: 'end' }}
+              pl={{ base: 2, md: 0 }}
             >
               {name}
             </Heading>
           </Stack>
-          <Box position={'relative'}>
+          <Box position={'relative'} h={{ base: 'full', md: 'unset' }}>
             <Image
               src={imagePath}
               w={'full'}
-              aspectRatio={{ base: 3 / 4, md: 4 / 3 }}
+              h={{ base: 'full', md: 'unset' }}
+              aspectRatio={{ base: undefined, md: 4 / 3 }}
               ref={bgImageRef}
             />
-            <Box position={'absolute'} top={0} left={0} w={'full'} h={'full'}>
-              <Center mt={'40px'}>
+            <Flex
+              position={'absolute'}
+              top={0}
+              left={0}
+              w={'full'}
+              h={{ base: bgImageHeight, md: 'full' }}
+              minH={{ base: bgImageHeight, md: 'full' }}
+              justify={'center'}
+              align={'flex-start'}
+            >
+              <Center my={'40px'} w={'full'}>
                 <Textarea
                   mx={10}
                   autoresize
@@ -99,9 +111,10 @@ const SpeakLikeCloud = () => {
                   maxH={bgImageHeight && bgImageHeight - 80}
                   value={cloudText}
                   onChange={(e) => setCloudText(e.target.value)}
+                  fontSize={{ base: '30px', md: '32px' }}
                 />
               </Center>
-            </Box>
+            </Flex>
           </Box>
         </VStack>
       </Center>
