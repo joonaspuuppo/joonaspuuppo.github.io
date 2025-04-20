@@ -115,6 +115,7 @@ const SpeakLikeCloud = () => {
               position={'relative'}
               h={{ base: 'full', md: 'unset' }}
               maxH={'full'}
+              id="skeleton"
             >
               <Image
                 src={imagePath}
@@ -144,6 +145,7 @@ const SpeakLikeCloud = () => {
                     value={dialogueLine}
                     onChange={(e) => setDialogueLine(e.target.value)}
                     fontSize={{ base: '30px', md: '32px' }}
+                    id="textArea"
                   />
                 </Center>
               </Flex>
