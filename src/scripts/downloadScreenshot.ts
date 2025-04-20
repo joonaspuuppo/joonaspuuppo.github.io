@@ -1,22 +1,18 @@
 import puppeteer from 'puppeteer'
 
-const downloadScreenshot = async () => {
+export const downloadScreenshot = async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  await page.goto('http://localhost:5173/#/speaklikecloud', {
+  await page.goto('https://joonaspuuppo.github.io/#/speaklikecloud', {
     waitUntil: 'networkidle0',
   })
   await page.setViewport({ width: 1080, height: 1080 })
   const skeleton = await page.$('#skeleton')
   const textArea = await page.$('#textArea')
-  if (skeleton) {
-    await skeleton.screenshot({ path: 'screenshot.jpg' })
-  }
-  if (textArea) {
-    const text = await textArea.evaluate((el) => el.textContent)
-    console.log(text)
-  }
+  await skeleton?.screenshot({ path: 'screenshot.jpg' })
+  const text = (await textArea?.evaluate((el) => el.textContent)) ?? ''
+  console.log(text)
   await browser.close()
-}
 
-await downloadScreenshot()
+  return { path: 'screenshot.jpg', text }
+}
