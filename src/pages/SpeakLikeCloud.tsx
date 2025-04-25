@@ -146,6 +146,7 @@ const SpeakLikeCloud = () => {
                     onChange={(e) => setDialogueLine(e.target.value)}
                     fontSize={{ base: '30px', md: '32px' }}
                     id="textArea"
+                    color={'white'}
                   />
                 </Center>
               </Flex>
