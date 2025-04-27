@@ -80,7 +80,7 @@ const SpeakLikeCloud = () => {
             pt={5}
             my={5}
             h={{ base: 'full', md: 'unset' }}
-            bgColor={{ base: 'transparent', md: 'hsl(240deg 100% 10.51%)' }}
+            bgColor={'hsl(240deg 100% 10.51%)'}
             borderRadius={{ md: '10px' }}
           >
             <Stack
@@ -160,6 +160,7 @@ const SpeakLikeCloud = () => {
           variant={'cloud'}
           size={'2xl'}
           onClick={() => setRandomDialogueLine()}
+          display={{ base: 'none', md: 'block' }}
         >
           <MdUpdate />
         </Button>
