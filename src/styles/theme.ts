@@ -1,5 +1,6 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 import { textAreaRecipe } from './recipes/textArea'
+import { buttonRecipe } from './recipes/button'
 
 const config = defineConfig({
   theme: {
@@ -11,6 +12,7 @@ const config = defineConfig({
     },
     recipes: {
       textarea: textAreaRecipe,
+      button: buttonRecipe,
     },
   },
 })

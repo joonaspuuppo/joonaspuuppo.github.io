@@ -17,6 +17,7 @@ import { CharacterName, DialogueLine } from '@/types/speakLikeCloud'
 import { getBackgroundImagePath, getCharacterVerb } from '@/util/speakLikeCloud'
 import { MdUpdate } from 'react-icons/md'
 import { useSwipeable } from 'react-swipeable'
+import InfoDrawer from './components/InfoDrawer'
 
 /**
  * TODO:
@@ -156,15 +157,13 @@ const SpeakLikeCloud = () => {
       </Box>
       <HStack position={'absolute'} top={1} right={1}>
         <Button
+          variant={'cloud'}
           size={'2xl'}
           onClick={() => setRandomDialogueLine()}
-          fontSize={'md'}
-          color={'white'}
-          bg={'transparent'}
-          rounded={'full'}
         >
           <MdUpdate />
         </Button>
+        <InfoDrawer />
       </HStack>
     </>
   )
