@@ -1,10 +1,10 @@
 import {
   Box,
-  Button,
   Center,
   Flex,
   Heading,
   HStack,
+  IconButton,
   Image,
   Skeleton,
   Stack,
@@ -156,14 +156,14 @@ const SpeakLikeCloud = () => {
         </Center>
       </Box>
       <HStack position={'absolute'} top={1} right={1}>
-        <Button
+        <IconButton
           variant={'cloud'}
           size={'2xl'}
           onClick={() => setRandomDialogueLine()}
-          display={{ base: 'none', md: 'block' }}
+          display={{ base: 'none', md: 'flex' }}
         >
           <MdUpdate />
-        </Button>
+        </IconButton>
         <InfoDrawer />
       </HStack>
     </>

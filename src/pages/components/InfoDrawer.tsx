@@ -1,4 +1,4 @@
-import { Drawer, Button, Portal, CloseButton } from '@chakra-ui/react'
+import { Drawer, Portal, CloseButton, IconButton } from '@chakra-ui/react'
 import { useState } from 'react'
 import { MdInfo } from 'react-icons/md'
 
@@ -8,9 +8,9 @@ const InfoDrawer = () => {
   return (
     <Drawer.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
       <Drawer.Trigger asChild>
-        <Button variant="cloud" size="2xl">
+        <IconButton variant="cloud" size="2xl">
           <MdInfo />
-        </Button>
+        </IconButton>
       </Drawer.Trigger>
       <Portal>
         <Drawer.Backdrop />
