@@ -14,7 +14,8 @@
     "getFFVIIdialogue": "npx tsx ./src/scripts/getFFVIIdialogue.ts",
     "getFFVIICharacters": "npx tsx ./src/scripts/getFFVIICharacters.ts",
     "downloadScreenshot": "npx tsx ./src/scripts/downloadScreenshot.ts",
-    "postToBlueSky": "npx tsx ./src/scripts/postToBlueSky.ts"
+    "postToBlueSky": "npx tsx ./src/scripts/postToBlueSky.ts",
+    "countDialogueLines": "npx tsx ./src/scripts/countDialogueLines.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.15.0",
