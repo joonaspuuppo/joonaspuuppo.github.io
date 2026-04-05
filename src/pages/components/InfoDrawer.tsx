@@ -17,7 +17,7 @@ const InfoDrawer = () => {
         <Drawer.Positioner>
           <Drawer.Content bg={'hsl(240deg 100% 10.51%)'}>
             <Drawer.Header>
-              <Drawer.Title>Speak Like Sephiroth</Drawer.Title>
+              <Drawer.Title>Talk Like Tifa</Drawer.Title>
             </Drawer.Header>
             <Drawer.Body>
               <p>

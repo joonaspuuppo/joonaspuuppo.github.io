@@ -12,9 +12,9 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import dialogue from './../../output.json'
-import { CharacterName, DialogueLine } from '@/types/speakLikeCloud'
-import { getBackgroundImagePath, getCharacterVerb } from '@/util/speakLikeCloud'
+import dialogue from '../../output.json'
+import { CharacterName, DialogueLine } from '@/types/talkLikeTifa'
+import { getBackgroundImagePath, getCharacterVerb } from '@/util/talkLikeTifa'
 import { MdUpdate } from 'react-icons/md'
 import { useSwipeable } from 'react-swipeable'
 import InfoDrawer from './components/InfoDrawer'
@@ -31,7 +31,7 @@ import InfoDrawer from './components/InfoDrawer'
 const MAX_WIDTH = '800px'
 const lines: DialogueLine[] = dialogue
 
-const SpeakLikeCloud = () => {
+const TalkLikeTifa = () => {
   const [imageHeight, setImageHeight] = useState<number>(0)
   const [imageLoading, setImageLoading] = useState<boolean>(true)
   const imageRef = useRef<HTMLImageElement>(null)
@@ -170,4 +170,4 @@ const SpeakLikeCloud = () => {
   )
 }
 
-export default SpeakLikeCloud
+export default TalkLikeTifa

@@ -21,4 +21,7 @@ export const verbs = {
   Sephiroth: 'Speak',
   Bugenhagen: 'Babble',
   Yuffie: 'Yap',
+  'Red XIII': 'Roar',
+  'Cait Sith': 'Confess',
+  default: 'Talk',
 }

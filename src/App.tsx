@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router'
-import SpeakLikeCloud from './pages/SpeakLikeCloud'
+import TalkLikeTifa from './pages/TalkLikeTifa'
 import { Box } from '@chakra-ui/react'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <Box w={'100vw'} h={'100vh'}>
       <Routes>
         <Route path="/" element={<p>Hello world!</p>} />
-        <Route path="/speaklikecloud" element={<SpeakLikeCloud />} />
+        <Route path="/talkliketifa" element={<TalkLikeTifa />} />
       </Routes>
     </Box>
   )

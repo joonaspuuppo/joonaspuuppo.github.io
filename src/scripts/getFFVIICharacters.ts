@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
 import fs from 'fs'
-import { cleanCharacterName } from '../util/speakLikeCloud'
+import { cleanCharacterName } from '../util/talkLikeTifa'
 
 const url =
   'https://finalfantasy.fandom.com/api.php?action=parse&page=Final_Fantasy_VII_script&prop=text&format=json'

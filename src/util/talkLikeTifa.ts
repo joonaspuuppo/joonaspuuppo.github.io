@@ -1,5 +1,5 @@
-import { imageCounts, verbs } from '../constants/speakLikeCloud'
-import { CharacterName } from '../types/speakLikeCloud'
+import { imageCounts, verbs } from '../constants/talkLikeTifa'
+import { CharacterName } from '../types/talkLikeTifa'
 
 export const getBackgroundImagePath = (
   characterName: CharacterName
@@ -36,7 +36,7 @@ const getRandomImageSuffix = (characterName: CharacterName): string => {
 }
 
 export const getCharacterVerb = (characterName: CharacterName): string => {
-  return verbs[characterName as keyof typeof verbs] ?? 'Speak'
+  return verbs[characterName as keyof typeof verbs] ?? verbs['default']
 }
 
 /**

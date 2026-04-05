@@ -1,8 +1,8 @@
-import { DialogueLine } from '../types/speakLikeCloud'
+import { DialogueLine } from '../types/talkLikeTifa'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
 import fs from 'fs'
-import { cleanCharacterName } from '../util/speakLikeCloud'
+import { cleanCharacterName } from '../util/talkLikeTifa'
 import characters from '../../characters.json'
 
 const url =
