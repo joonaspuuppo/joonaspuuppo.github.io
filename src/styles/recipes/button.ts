@@ -11,11 +11,18 @@ export const buttonRecipe = defineRecipe({
       cloud: {
         color: 'white',
         bg: 'hsl(240deg 100% 10.51%) !important',
-        border: 'none !important',
+        border: 'none',
         boxSize: '10',
         opacity: '75%',
         _focus: {
           outline: 'none !important',
+        },
+      },
+      solid: {
+        bg: 'blue.800',
+        color: 'white',
+        _hover: {
+          bg: 'blue.700',
         },
       },
     },

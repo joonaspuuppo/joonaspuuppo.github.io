@@ -15,10 +15,10 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import dialogue from '../../output.json'
 import { CharacterName, DialogueLine } from '@/types/talkLikeTifa'
 import { getBackgroundImagePath, getCharacterVerb } from '@/util/talkLikeTifa'
-import { MdUpdate } from 'react-icons/md'
+import { MdUpdate, MdShare } from 'react-icons/md'
 import { useSwipeable } from 'react-swipeable'
 import InfoDrawer from './components/InfoDrawer'
-
+import { shareImage } from '@/util/shareImage'
 /**
  * TODO:
  * - Add ability to return to previous line & image combinations
@@ -35,6 +35,9 @@ const TalkLikeTifa = () => {
   const [imageHeight, setImageHeight] = useState<number>(0)
   const [imageLoading, setImageLoading] = useState<boolean>(true)
   const imageRef = useRef<HTMLImageElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null)
+  const [desktopFontSize, setDesktopFontSize] = useState<number>(64)
+  const [mobileNameSize, setMobileNameSize] = useState<number>(90)
   const [name, setName] = useState<string>('')
   const [dialogueLine, setDialogueLine] = useState<string>('')
   const imagePath = useMemo(
@@ -57,6 +60,43 @@ const TalkLikeTifa = () => {
     const randomLine = lines[randomIndex]
     setDialogueLine(`${randomLine.name}\n\u201C${randomLine.line}\u201D`)
     setName(randomLine.name)
+  }
+
+  useEffect(() => {
+    if (!titleRef.current) return
+    const isMobile = window.innerWidth < 768
+    const container = titleRef.current
+    const availableW = container.getBoundingClientRect().width
+    const testCanvas = document.createElement('canvas')
+    const tctx = testCanvas.getContext('2d')!
+
+    if (isMobile) {
+      let size = 90
+      while (size > 30) {
+        tctx.font = `${size}px Reactor, sans-serif`
+        if (tctx.measureText(name).width <= availableW - 16) break
+        size -= 2
+      }
+      setMobileNameSize(size)
+    } else {
+      const verb = getCharacterVerb(name as CharacterName) + ' like'
+      const gap = 16
+      let size = 64
+      while (size > 24) {
+        tctx.font = `200 ${size}px sans-serif`
+        const verbW = tctx.measureText(verb).width
+        tctx.font = `${size * 1.4}px Reactor, sans-serif`
+        const nameW = tctx.measureText(name).width
+        if (verbW + nameW + gap <= availableW) break
+        size -= 2
+      }
+      setDesktopFontSize(size)
+    }
+  }, [name])
+
+  const handleShare = () => {
+    if (!imageRef.current) return
+    shareImage(imageRef.current, dialogueLine)
   }
 
   useEffect(() => {
@@ -84,29 +124,31 @@ const TalkLikeTifa = () => {
             borderRadius={{ md: '10px' }}
           >
             <Stack
+              ref={titleRef}
               direction={{ base: 'column', md: 'row' }}
               fontSize={'128px'}
               my={{ base: 0, md: 5 }}
               spaceX={{ base: 0, md: 4 }}
               justifyContent={'center'}
-              //outline={'1px solid red'}
             >
               <Heading
-                fontSize={{ base: '32px', md: '64px' }}
+                fontSize={{ base: '32px', md: `${desktopFontSize}px` }}
                 fontWeight={'200'}
-                //outline={'1px solid green'}
                 lineHeight={1}
                 textAlign={'center'}
               >
                 {getCharacterVerb(name as CharacterName)} like
               </Heading>
               <Heading
-                fontSize={'90px'}
+                fontSize={{
+                  base: `${mobileNameSize}px`,
+                  md: `${Math.round(desktopFontSize * 1.4)}px`,
+                }}
                 fontFamily={'Reactor'}
-                //outline={'1px solid red'}
                 lineHeight={{ base: 1, md: 0.5 }}
                 alignSelf={{ base: 'center', md: 'end' }}
                 pl={{ base: 2, md: 0 }}
+                whiteSpace="nowrap"
               >
                 {name}
               </Heading>
@@ -159,12 +201,30 @@ const TalkLikeTifa = () => {
         <IconButton
           variant={'cloud'}
           size={'2xl'}
+          onClick={handleShare}
+          aria-label="Share"
+          title="Share"
+          display={{ base: 'none', md: 'flex' }}
+        >
+          <MdShare />
+        </IconButton>
+        <IconButton
+          variant={'cloud'}
+          size={'2xl'}
           onClick={() => setRandomDialogueLine()}
           display={{ base: 'none', md: 'flex' }}
+          aria-label="Refresh"
+          title="Refresh"
         >
           <MdUpdate />
         </IconButton>
-        <InfoDrawer />
+        <InfoDrawer
+          onShare={handleShare}
+          onRefresh={setRandomDialogueLine}
+          onEdit={() => {
+            setTimeout(() => document.getElementById('textArea')?.focus(), 100)
+          }}
+        />
       </HStack>
     </>
   )
