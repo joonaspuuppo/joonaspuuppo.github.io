@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router'
 import TalkLikeTifa from './pages/TalkLikeTifa'
 import { Box } from '@chakra-ui/react'
+import '@fontsource-variable/lexend/wght.css'
 
 function App() {
   return (

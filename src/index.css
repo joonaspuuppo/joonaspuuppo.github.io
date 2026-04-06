@@ -1,5 +1,4 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -69,5 +68,7 @@ button:focus-visible {
 
 @font-face {
   font-family: 'Reactor';
-  src: local('Reactor'), url('./assets/fonts/Reactor7.woff') format('woff');
+  src:
+    local('Reactor'),
+    url('./assets/fonts/Reactor7.woff') format('woff');
 }

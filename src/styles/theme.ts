@@ -14,6 +14,12 @@ const config = defineConfig({
       textarea: textAreaRecipe,
       button: buttonRecipe,
     },
+    tokens: {
+      fonts: {
+        heading: { value: `'Lexend Variable', sans-serif` },
+        body: { value: `'Lexend Variable', sans-serif` },
+      },
+    },
   },
 })
 
