@@ -100,6 +100,10 @@ const TalkLikeTifa = () => {
   }
 
   useEffect(() => {
+    document.title = 'Talk Like Tifa'
+  }, [])
+
+  useEffect(() => {
     setRandomDialogueLine()
   }, [])
 

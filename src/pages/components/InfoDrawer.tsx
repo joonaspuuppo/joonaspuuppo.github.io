@@ -84,7 +84,7 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                     bg="transparent"
                     focusRing={'none'}
                   >
-                    Info
+                    About
                   </Tabs.Trigger>
                   <Tabs.Trigger
                     value="actions"
@@ -207,7 +207,9 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                       </Text>
                       <Link
                         href="https://bsky.app/profile/speaklikesephiroth.bsky.social"
-                        target="_blank" rel="noopener noreferrer" color={'blue.300'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color={'blue.300'}
                         mt={3}
                       >
                         <HStack>
@@ -226,14 +228,21 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                           FFVII screenshots by{' '}
                           <Link
                             href="https://fantasyanime.com/finalfantasy/screen-shots.htm"
-                            target="_blank" rel="noopener noreferrer" color={'blue.300'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color={'blue.300'}
                           >
                             FantasyAnime.com
                           </Link>
                         </Text>
                         <Text>
                           FFVII pixel font Reactor7 by{' '}
-                          <Link href="https://caveras.net/" target="_blank" rel="noopener noreferrer" color={'blue.300'}>
+                          <Link
+                            href="https://caveras.net/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color={'blue.300'}
+                          >
                             Caveras
                           </Link>
                         </Text>
@@ -241,11 +250,14 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                           FFVII script from{' '}
                           <Link
                             href="https://finalfantasy.fandom.com/wiki/Final_Fantasy_VII_script"
-                            target="_blank" rel="noopener noreferrer" color={'blue.300'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color={'blue.300'}
                           >
                             Final Fantasy Wiki
                           </Link>
                         </Text>
+                        <Text>Game: Final Fantasy VII (Square, 1997)</Text>
                       </VStack>
                     </Box>
 
@@ -257,7 +269,9 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                       <VStack align={'start'} spaceY={1}>
                         <Link
                           href="https://joonaspuuppo.com/"
-                          target="_blank" rel="noopener noreferrer" color={'blue.300'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          color={'blue.300'}
                         >
                           <HStack>
                             <FaGlobe />
@@ -266,7 +280,9 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                         </Link>
                         <Link
                           href="https://bsky.app/profile/joonaspuuppo.bsky.social"
-                          target="_blank" rel="noopener noreferrer" color={'blue.300'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          color={'blue.300'}
                         >
                           <HStack>
                             <FaBluesky />
@@ -275,7 +291,9 @@ const InfoDrawer = ({ onShare, onRefresh, onEdit }: InfoDrawerProps) => {
                         </Link>
                         <Link
                           href="https://www.instagram.com/joonaspuuppo/"
-                          target="_blank" rel="noopener noreferrer" color={'blue.300'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          color={'blue.300'}
                         >
                           <HStack>
                             <FaInstagram />
