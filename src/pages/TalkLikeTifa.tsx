@@ -17,8 +17,9 @@ import { CharacterName, DialogueLine } from '@/types/talkLikeTifa'
 import { getBackgroundImagePath, getCharacterVerb } from '@/util/talkLikeTifa'
 import { MdUpdate, MdShare } from 'react-icons/md'
 import { useSwipeable } from 'react-swipeable'
-import InfoDrawer from './components/InfoDrawer'
 import { shareImage } from '@/util/shareImage'
+import usePageMeta from '@/hooks/usePageMeta'
+import InfoDrawer from './components/InfoDrawer'
 /**
  * TODO:
  * - Add ability to return to previous line & image combinations
@@ -99,9 +100,13 @@ const TalkLikeTifa = () => {
     shareImage(imageRef.current, dialogueLine)
   }
 
-  useEffect(() => {
-    document.title = 'Talk Like Tifa'
-  }, [])
+  usePageMeta({
+    title: 'Talk Like Tifa',
+    description:
+      'Random lines of dialogue from Final Fantasy VII (1997) presented as in-game text boxes',
+    image: 'https://joonaspuuppo.github.io/ffvii_bg_aeris_4.jpg',
+    url: 'https://joonaspuuppo.dev/#/talkliketifa',
+  })
 
   useEffect(() => {
     setRandomDialogueLine()
