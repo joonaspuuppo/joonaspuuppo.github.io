@@ -2,7 +2,7 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 import { textAreaRecipe } from './recipes/textArea'
 import { buttonRecipe } from './recipes/button'
 
-const config = defineConfig({
+const talkLikeTifaConfig = defineConfig({
   theme: {
     breakpoints: {
       sm: '320px',
@@ -23,4 +23,4 @@ const config = defineConfig({
   },
 })
 
-export default createSystem(defaultConfig, config)
+export default createSystem(defaultConfig, talkLikeTifaConfig)
