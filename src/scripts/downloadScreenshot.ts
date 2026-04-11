@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer'
 export const downloadScreenshot = async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  await page.goto('https://joonaspuuppo.github.io/#/talkliketifa', {
+  await page.goto('https://joonaspuuppo.github.io/talkliketifa', {
     waitUntil: 'networkidle0',
   })
   await page.setViewport({ width: 1080, height: 1080 })

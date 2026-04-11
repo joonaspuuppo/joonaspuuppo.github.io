@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="32x32" href="/materia.png" />
     <title>joonaspuuppo.github.io</title>
+    <script>
+      // Restore route after GitHub Pages 404 redirect
+      const redirect = sessionStorage.getItem('spa_redirect')
+      if (redirect) {
+        sessionStorage.removeItem('spa_redirect')
+        window.history.replaceState(null, '', redirect)
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

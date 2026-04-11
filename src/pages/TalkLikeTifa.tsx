@@ -105,7 +105,7 @@ const TalkLikeTifa = () => {
     description:
       'Random lines of dialogue from Final Fantasy VII (1997) presented as in-game text boxes',
     image: 'https://joonaspuuppo.github.io/ffvii_bg_aeris_4.jpg',
-    url: 'https://joonaspuuppo.dev/#/talkliketifa',
+    url: 'https://joonaspuuppo.github.io/talkliketifa',
   })
 
   useEffect(() => {
