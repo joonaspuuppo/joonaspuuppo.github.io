@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "predeploy": "yarn run build",
     "deploy": "yarn run theme && gh-pages -d dist",
-    "theme": "npx @chakra-ui/cli typegen ./src/styles/theme.ts",
+    "theme": "npx @chakra-ui/cli typegen ./src/styles/talkLikeTifa/theme.ts",
     "getFFVIIdialogue": "npx tsx ./src/scripts/getFFVIIdialogue.ts",
     "getFFVIICharacters": "npx tsx ./src/scripts/getFFVIICharacters.ts",
     "downloadScreenshot": "npx tsx ./src/scripts/downloadScreenshot.ts",
