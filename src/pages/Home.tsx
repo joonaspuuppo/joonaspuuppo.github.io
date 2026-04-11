@@ -52,12 +52,10 @@ const Home = () => {
             Projects
           </Text>
           {projects.map((p) => (
-            <Link
+            <RouterLink
               key={p.path}
-              as={RouterLink}
               to={p.path}
-              _hover={{ textDecoration: 'none' }}
-              w="full"
+              style={{ width: '100%', textDecoration: 'none' }}
             >
               <Box
                 borderBottom="1px solid"
@@ -73,7 +71,7 @@ const Home = () => {
                   {p.description}
                 </Text>
               </Box>
-            </Link>
+            </RouterLink>
           ))}
         </VStack>
 
