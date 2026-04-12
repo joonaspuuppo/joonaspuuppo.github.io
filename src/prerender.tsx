@@ -12,8 +12,21 @@ const routeMeta: Record<
 > = {
   '/': {
     title: 'Joonas Puuppo',
-    description: 'Software developer. Creative coder.',
-    image: '',
+    description:
+      "Hello world! I'm a software developer and designer based in Jyväskylä, Finland.",
+    image: 'https://joonaspuuppo.dev/devsite_screenshot.png',
+  },
+  '/projects': {
+    title: 'Projects — Joonas Puuppo',
+    description:
+      "Hello world! I'm a software developer and designer based in Jyväskylä, Finland.",
+    image: 'https://joonaspuuppo.dev/devsite_screenshot.png',
+  },
+  '/about': {
+    title: 'About — Joonas Puuppo',
+    description:
+      "Hello world! I'm a software developer and designer based in Jyväskylä, Finland.",
+    image: 'https://joonaspuuppo.dev/devsite_screenshot.png',
   },
   '/talkliketifa': {
     title: 'Talk Like Tifa',
