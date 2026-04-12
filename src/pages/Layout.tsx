@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Text, Stack, HStack, Link } from '@chakra-ui/react'
 import { Link as RouterLink, useLocation, Outlet } from 'react-router'
 import usePageMeta from '@/hooks/usePageMeta'
 import { useEffect, useRef } from 'react'
-import { FaGithub, FaBluesky, FaInstagram } from 'react-icons/fa6'
+import { FaGithub, FaBluesky, FaLinkedin } from 'react-icons/fa6'
 
 const navLinks = [
   { label: '/home', path: '/' },
@@ -48,9 +48,9 @@ const Layout = () => {
 
   return (
     <Box
-      minH="100vh"
+      h={{ base: 'auto', md: '100vh' }}
       bg="hsl(240, 10%, 10%)"
-      overflow="hidden"
+      overflow={{ base: 'auto', md: 'hidden' }}
       position="relative"
     >
       {/* Cursor glow */}
@@ -77,7 +77,7 @@ const Layout = () => {
       <Flex
         position="relative"
         zIndex={1}
-        minH="100vh"
+        h={{ base: 'auto', md: '100vh' }}
         direction={{ base: 'column', md: 'row' }}
       >
         {/* Home panel */}
@@ -108,7 +108,8 @@ const Layout = () => {
               mt={4}
               mb={8}
             >
-              Software developer. Creative coder.
+              // Hello world! I'm a software developer and designer based in
+              Jyväskylä, Finland.
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} gap={6}>
               {navLinks.map((link) => (
@@ -148,9 +149,9 @@ const Layout = () => {
                   label: 'Bluesky',
                 },
                 {
-                  href: 'https://www.instagram.com/joonaspuuppo/',
-                  icon: <FaInstagram size={16} />,
-                  label: 'Instagram',
+                  href: 'https://linkedin.com/in/joonas-puuppo',
+                  icon: <FaLinkedin size={16} />,
+                  label: 'LinkedIn',
                 },
               ].map(({ href, icon, label }) => (
                 <Link
@@ -181,6 +182,8 @@ const Layout = () => {
             py={{ base: 10, md: 16 }}
             borderColor="whiteAlpha.100"
             color="white"
+            overflowY={{ md: 'auto' }}
+            h={{ md: '100vh' }}
           >
             <Outlet />
             <HStack
@@ -188,10 +191,8 @@ const Layout = () => {
               color="whiteAlpha.400"
               flexWrap="wrap"
               display={{ base: 'flex', md: 'none' }}
-              position="fixed"
-              bottom={6}
-              left={0}
-              right={0}
+              mt={16}
+              mb={8}
               justifyContent="center"
             >
               {[
@@ -206,9 +207,9 @@ const Layout = () => {
                   label: 'Bluesky',
                 },
                 {
-                  href: 'https://www.instagram.com/joonaspuuppo/',
-                  icon: <FaInstagram size={16} />,
-                  label: 'Instagram',
+                  href: 'https://www.linkedin.com/in/joonaspuuppo',
+                  icon: <FaLinkedin size={16} />,
+                  label: 'LinkedIn',
                 },
               ].map(({ href, icon, label }) => (
                 <Link
